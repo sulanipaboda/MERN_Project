@@ -12,6 +12,45 @@ const Banner = () => {
         </div>
         <div className='md:w-1/2'>
             <img src={banner} alt='' />
+
+            <div>
+                <div className='flex bg-white py-2 px-3 rounded=2xl items-center gap=3'>
+                    <img src='' alt='' className='rounded-2xl' />
+
+                    <div className='space-y-1'>
+                        <h5 className='font-medium mb-1'>Spicy Noodles</h5>
+                        <div className='rating rating-sm'>
+                            <input 
+                                type='radio'
+                                name='rating-2'
+                                className='mask mask-star-2 bg-yellow-500'
+                            />
+                            <input 
+                                type='radio'
+                                name='rating-2'
+                                className='mask mask-star-2 bg-yellow-500'
+                            />
+                            <input 
+                                type='radio'
+                                name='rating-2'
+                                className='mask mask-star-2 bg-yellow-500'
+                                checked
+                            />
+                            <input 
+                                type='radio'
+                                name='rating-2'
+                                className='mask mask-star-2 bg-yellow-500'
+                            />
+                            <input 
+                                type='radio'
+                                name='rating-2'
+                                className='mask mask-star-2 bg-yellow-500'
+                            />
+                        </div>
+                        <p className='text-red'>$18.00</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     </div>
