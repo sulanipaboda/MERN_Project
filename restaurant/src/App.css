@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
 
+.navbar-start {
+    background-color: white;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
+    background-color: white;
+}
+
+.section-container {
+    @apply max-w-screen-2xl container mx-auto xl:px-24 px-4;
 }
