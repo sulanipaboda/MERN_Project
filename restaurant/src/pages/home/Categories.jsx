@@ -1,5 +1,4 @@
 import React from 'react'
-import img1 from '../../assets/home/category/img1.png'
 
 const categoryItems = [
     {id: 1, title: "Main Dish", des: "(86 dishes)", image: "/home/category/img1.png"},

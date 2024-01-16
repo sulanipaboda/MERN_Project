@@ -1,6 +1,6 @@
 import React from 'react'
 import banner from '../assets/banner.png'
-import food1 from '../assets/home/b-food1.png'
+import food1 from '/home/b-food1.png'
 
 const Banner = () => {
   return (
