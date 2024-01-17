@@ -87,7 +87,7 @@ const SpecialDishes = () => {
             <h2 className='title md:w-[52]'>Standout Dishes From Our menu</h2>
        </div>
       {/* arrow btn */}
-       <div className='md:absolute right-3 top-82 mb-10 md:mr-24'>
+       <div className='md:absolute right-3 top-80.5 mb-10 md:mr-24'>
         <button onClick={() => slider ?.current?.slickPrev()} className='btn p-2 rounded-full ml-5 border-none text-white'>
           <FaAngleLeft className='w-8 h-8 p-1' />
         </button>

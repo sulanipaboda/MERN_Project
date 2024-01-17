@@ -17,31 +17,31 @@ const Testimonials = () => {
                 <div className='text-left'>
                     <p className='subtitle'>TESTIMONIALS</p>
                     <h2 className='title'>What Our Customers Say About Us</h2>
-                    <blockquote className=' my-5 text-secondary leading=[30px]'>
+                    <blockquote className=' my-5 text-secondary leading-[30px]'>
                         "I had the pleasure of dining at Foodi last night, and I'm still 
                         raving about the experience! The attention to detail in presentation 
                         and service was impeccable."
                     </blockquote>
 
                     {/* avatar */}
-                    <div>
-                        <div className="avatar-group -space-x-6 rtl:space-x-reverse">
-                            <div className="avatar bg-white">
+                    <div className='flex items-center gap-4 flex-wrap'>
+                        <div className="avatar-group  -space-x-6 rtl:space-x-reverse">
+                            <div className="avatar border-none">
                                 <div className="w-12">
                                 <img src={testimonial1} />
                                 </div>
                             </div>
-                            <div className="avatar">
+                            <div className="avatar border-none">
                                 <div className="w-12">
                                 <img src={testimonial2} />
                                 </div>
                             </div>
-                            <div className="avatar">
+                            <div className="avatar border-none">
                                 <div className="w-12">
                                 <img src={testimonial3} />
                                 </div>
                             </div>
-                            <div className="avatar placeholder">
+                            <div className="avatar placeholder border-none">
                                 <div className="w-12 bg-neutral text-neutral-content">
                                 <span>+99</span>
                                 </div>
@@ -49,9 +49,9 @@ const Testimonials = () => {
                         </div>
                         <div className='space-y-1'>
                             <h5 className='text-lg font-semibold'>Customer Feedback</h5>
-                            <div className='flex items- '>
+                            <div className='flex items-center gap-2'>
                                 <FaStar className="text-yellow-400" />
-                                <span className='font-medium'>4.9</span><span>(18.6k Reviews)</span>
+                                <span className='font-medium'>4.9</span><span className='text-[#807E7E]'>(18.6k Reviews)</span>
                             </div> 
                         </div>
                     </div>
