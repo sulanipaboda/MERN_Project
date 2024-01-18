@@ -28,7 +28,15 @@ const Menu = () => {
 
     //filtering data based on category
     const filterItems = (category) => {
-        const filtered = category === "all"
+        const filtered = category === "all" ? menu : menu.filter((item) => item.category === category);
+        setFilteredItems(filtered);
+        setSelectedCategory(category);
+    }
+
+    //show all data
+    const showAll = () => {
+        setFilteredItems(menu);
+        setSelectedCategory("all");
     }
 
   return (
