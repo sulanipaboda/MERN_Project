@@ -1,9 +1,9 @@
 import React from 'react'
 import { FaStar } from 'react-icons/fa';
-import testimonial from '../../public/home/testimonials/testimonials.png'
-import testimonial1 from '../../public/home/testimonials/testimonial1.png'
-import testimonial2 from '../../public/home/testimonials/testimonial2.png'
-import testimonial3 from '../../public/home/testimonials/testimonial3.png'
+import testimonial from '/home/testimonials/testimonials.png'
+import testimonial1 from '/home/testimonials/testimonial1.png'
+import testimonial2 from '/home/testimonials/testimonial2.png'
+import testimonial3 from '/home/testimonials/testimonial3.png'
 
 
 const Testimonials = () => {
@@ -26,22 +26,22 @@ const Testimonials = () => {
                     {/* avatar */}
                     <div>
                         <div className="avatar-group -space-x-6 rtl:space-x-reverse">
-                            <div className="avatar bg-white">
+                            <div className="avatar border-none">
                                 <div className="w-12">
                                 <img src={testimonial1} />
                                 </div>
                             </div>
-                            <div className="avatar">
+                            <div className="avatar border-none">
                                 <div className="w-12">
                                 <img src={testimonial2} />
                                 </div>
                             </div>
-                            <div className="avatar">
+                            <div className="avatar border-none">
                                 <div className="w-12">
                                 <img src={testimonial3} />
                                 </div>
                             </div>
-                            <div className="avatar placeholder">
+                            <div className="avatar border-none placeholder">
                                 <div className="w-12 bg-neutral text-neutral-content">
                                 <span>+99</span>
                                 </div>
