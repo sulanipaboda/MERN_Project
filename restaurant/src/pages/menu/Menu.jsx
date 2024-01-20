@@ -1,43 +1,74 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
+import Cards from '../../components/Cards';
+import { FaFilter } from "react-icons/fa"
 
 const Menu = () => {
-    const [menu, setmMenu] = useState([]);
+    const [menu, setMenu] = useState([]);
     const [filteredItems, setFilteredItems] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState("all");
     const [sortOption, setSortOption] = useState("default");
 
     // loading data
     useEffect(() => {
-        //fetch data from the backend
+        // Fetch data from the backend
         const fetchData = async () => {
-            try{
-                const response = await fetch("/menu.json");
-                const data = await response.json();
-                // console.log(data)
-                setMenu(data);
-                setFilteredItems(data);
-            } catch(error){
-                console.log("Error fetching data", error)
-            }
+          try {
+            const response = await fetch("/menu.json");
+            const data = await response.json();
+            setMenu(data);
+            setFilteredItems(data); // Initially, display all items
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          }
         };
-
-        //function calling
+    
         fetchData();
-    }, [])
-
-    //filtering data based on category
-    const filterItems = (category) => {
-        const filtered = category === "all" ? menu : menu.filter((item) => item.category === category);
+      }, []);
+    
+      const filterItems = (category) => {
+        const filtered =
+          category === "all"
+            ? menu
+            : menu.filter((item) => item.category === category);
+    
         setFilteredItems(filtered);
         setSelectedCategory(category);
-    }
-
-    //show all data
-    const showAll = () => {
+        setCurrentPage(1);
+      };
+    
+      const showAll = () => {
         setFilteredItems(menu);
         setSelectedCategory("all");
-    }
+        setCurrentPage(1); 
+      };
+    
+      const handleSortChange = (option) => {
+        setSortOption(option);
+    
+        // Logic for sorting based on the selected option
+        let sortedItems = [...filteredItems];
+    
+        switch (option) {
+          case "A-Z":
+            sortedItems.sort((a, b) => a.name.localeCompare(b.name));
+            break;
+          case "Z-A":
+            sortedItems.sort((a, b) => b.name.localeCompare(a.name));
+            break;
+          case "low-to-high":
+            sortedItems.sort((a, b) => a.price - b.price);
+            break;
+          case "high-to-low":
+            sortedItems.sort((a, b) => b.price - a.price);
+            break;
+          default:
+            // Do nothing for the "default" case
+            break;
+        }
+    
+        setFilteredItems(sortedItems);
+      };
 
   return (
     <div>
@@ -55,7 +86,32 @@ const Menu = () => {
 
         {/* menu items */}
         <div className='section-container'>
+            {/* filtering and sorting */}
+            <div>
+                {/* category buttons */}
+                <div className='flex flex-row justify-start md:items-center md:gap-8 gap-4 flex-wrap'>
+                    <button onClick={showAll} className={selectedCategory === "all" ? "active" : ""}>All</button>
+                    <button onClick={() => filterItems("salad")} className={selectedCategory === "salad" ? "active" : ""}>Salad</button>
+                    <button onClick={() => filterItems("pizza")} className={selectedCategory === "pizza" ? "active" : ""}>Pizza</button>
+                    <button onClick={() => filterItems("soup")} className={selectedCategory === "soup" ? "active" : ""}>Soup</button>
+                    <button onClick={() => filterItems("dessert")} className={selectedCategory === "dessert" ? "active" : ""}>Desserts</button>
+                    <button onClick={() => filterItems("drinks")} className={selectedCategory === "drinks" ? "active" : ""}>Drinks</button>
+                </div>
 
+                {/* sorting filter */}
+                <div className='bg-black p-2'>
+                    <FaFilter className='h-4 w-4 text-white' />
+                </div>
+            </div>
+
+            {/* products card */}
+            <div className='grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4'>
+                {
+                    filteredItems.map((item, i) => (
+                        <Cards key={i} item={item} />
+                    ))
+                }
+            </div>
         </div>
     </div>
   )
