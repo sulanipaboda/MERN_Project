@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import logo from '../assets/logo.png'
-import { FiPhoneCall } from "react-icons/fi";
+import { FaRegUser } from "react-icons/fa";
+import Modal from './Modal';
+import { AuthContext } from '../contexts/AuthProvider';
+
 const Navbar = () => {
     const [isSticky, setSticky] = useState(false);
-
+    const {user} =useContext(AuthContext);
+    console.log(user);
+    
     useEffect(() => {
         const handleScroll = () => {
             const offset = window.scrollY;
@@ -98,8 +103,13 @@ const Navbar = () => {
                     <span className="badge badge-sm indicator-item">8</span>
                     </div>
                 </label>
-                {/* btn */}
-                <a className="btn bg-orange border-orange rounded-full text-white flex items-center gap-2"><FiPhoneCall /> Contact</a>
+                {/* login button */}
+                <button 
+                onClick={() => document.getElementById('my_modal_5').showModal()}
+                className="btn bg-orange border-orange rounded-full text-white flex items-center gap-2">
+                    <FaRegUser /> Login
+                </button>
+                <Modal />
             </div>
         </div>
     </header>
