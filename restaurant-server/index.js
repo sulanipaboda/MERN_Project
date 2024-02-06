@@ -24,8 +24,15 @@ const client = new MongoClient(uri, {
     version: ServerApiVersion.v1,
     strict: false,
     deprecationErrors: true,
+    useNewUrlParser: true, 
+    useUnifiedTopology: true, 
+    ssl: true, 
+    tlsAllowInvalidCertificates: true
   }
 });
+
+
+
 
 async function run() {
   try {
