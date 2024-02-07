@@ -90,7 +90,7 @@ const Menu = () => {
                     Greek Salad, lasagna, Butternut Pumpkin, Tokusen Wagyu, Olivas Rellenas and more for a moderate cost</p>
                     <button className='btn bg-orange border-none px-8 py-3 font-semibold text-white rounded-full'>Order Now</button>
                 </div>
-            </div>
+            </div>   
         </div>
 
         {/* menu items */}
@@ -99,7 +99,7 @@ const Menu = () => {
             <div className='flex flex-col md:flex-row flex-wrap md:justify-between items-center space-y-3 mb-8'>
                 {/* category buttons */}
                 <div className='flex flex-row justify-start md:items-center md:gap-8 gap-4 flex-wrap'>
-                    <button onClick={showAll} className={selectedCategory === "all" ? "active" : ""}>All</button>
+                    <button onClick={showAll        } className={selectedCategory === "all" ? "active" : ""}>All</button>
                     <button onClick={() => filterItems("salad")} className={selectedCategory === "salad" ? "active" : ""}>Salad</button>
                     <button onClick={() => filterItems("pizza")} className={selectedCategory === "pizza" ? "active" : ""}>Pizza</button>
                     <button onClick={() => filterItems("soup")} className={selectedCategory === "soup" ? "active" : ""}>Soup</button>
