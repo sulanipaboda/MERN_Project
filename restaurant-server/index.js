@@ -11,8 +11,9 @@ app.use(express.json());
 //bBHfrHtmzAWIQcSx
 //bBHfrHtmzAWIQcSx
 
-//mongodb config 
-
+app.get('/', (req, res) => {
+    res.send('Hello World')
+}) 
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
 //const uri = "mongodb+srv://sulanipaboda98:bBHfrHtmzAWIQcSx@cluster0.jburbso.mongodb.net/?retryWrites=true&w=majority";
@@ -40,11 +41,6 @@ async function run() {
 }
 run().catch(console.dir);
 
-
-
-app.get('/', (req, res) => {
-    res.send('Hello World')
-}) 
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
