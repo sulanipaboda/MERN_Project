@@ -50,7 +50,7 @@ const Signup = () => {
               <input
                 type="email"
                 placeholder="email"
-                className="input input-bordered"
+                className="input input-bordered  bg-gray-200"
                 {...register("email")}
               />
             </div>
@@ -63,14 +63,14 @@ const Signup = () => {
               <input
                 type="password"
                 placeholder="password"
-                className="input input-bordered"
+                className="input input-bordered  bg-gray-200"
                 {...register("password")}
               />
-              <label className="label mt-1">
+              {/* <label className="label mt-1">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
                 </a>
-              </label>
+              </label> */}
             </div>
 
             {/* error */}
@@ -79,8 +79,8 @@ const Signup = () => {
             <div className="form-control mt-6">
               <input
                 type="submit"
-                value="Signup"
-                className="btn bg-orange text-white"
+                value="Sign Up"
+                className="btn bg-orange border-none text-white"
               />
             </div>
 
