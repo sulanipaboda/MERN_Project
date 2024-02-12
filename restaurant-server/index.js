@@ -13,13 +13,16 @@ app.use(express.json());
 
 mongoose
   .connect(
-    `mongodb+srv://sulanipaboda98:bBHfrHtmzAWIQcSx@cluster0.jburbso.mongodb.net/?retryWrites=true&w=majority`
+    `mongodb+srv://sulanipaboda98:bBHfrHtmzAWIQcSx@cluster0.jburbso.mongodb.net/db-restaurant?retryWrites=true&w=majority`
   )
   .then(
     console.log("Conneted to MongoDB Successfully")
   )
   .catch((error) => console.log("Error connecting to MongoDB", error));
 
+//import routes
+const menuRoutes = require('./api/routes/menuRoutes');
+app.use('/menu', menuRoutes)
 
 app.get('/', (req, res) => {
   res.send('Restaurant database')
