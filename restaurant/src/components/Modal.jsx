@@ -93,13 +93,13 @@ const Modal = () => {
                 
                 {/* sign in options */}
                 <div className='text-center space-x-3 mb-5'>
-                    <button className='btn btn-circle bg-gray-200 border-none hover:bg-orange hover:text-white' onClick={handleLogin}>
+                    <button className='btn btn-circle bg-gray-200 border-none hover:bg-orange hover:text-white hover:border-none' onClick={handleLogin}>
                         <FaGoogle />
                     </button>
-                    <button className='btn btn-circle bg-gray-200 border-none hover:bg-orange hover:text-white'>
+                    <button className='btn btn-circle bg-gray-200 border-none hover:bg-orange hover:text-white hover:border-none'>
                         <FaFacebookF />
                     </button>
-                    <button className='btn btn-circle bg-gray-200 border-none hover:bg-orange hover:text-white'>
+                    <button className='btn btn-circle bg-gray-200 border-none hover:bg-orange hover:text-white hover:border-none'>
                         <FaGithub />
                     </button>
                 </div>

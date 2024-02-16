@@ -1,15 +1,21 @@
 import React, { useContext } from 'react'
 import { AuthContext } from "../contexts/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const Profile = ({ user }) => {
-    const {logOut} = useContext(AuthContext)
+  const {logOut} = useContext(AuthContext)
+  const navigate = useNavigate()
+  
   const handleLogout = () => {
-    logOut().then(() => {
-      // Sign-out successful.
-    }).catch((error) => {
-      // An error happened.
-    });
-  }
+    logOut()
+      .then(() => {
+        // Sign-out successful.
+        navigate("/")
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div>
@@ -25,10 +31,10 @@ const Profile = ({ user }) => {
                 </div>
             </div>
             <ul tabIndex={0} className="mt-3 x-1 z-[2] p-2 shadow menu menu-sm dropdown-content bg-white rounded-box w-52">
-                <li><a href="update-profile">Profile</a></li>
+                <li className='bg-white'><a href="update-profile">Profile</a></li>
                 <li><a>Order</a></li>
                 <li><a>Settings</a></li>
-                <li><a onClick={handleLogout}>Logout</a></li>
+                <li className='bg-white'><a onClick={handleLogout}>Logout</a></li>
             </ul>
         </div>
   </div>

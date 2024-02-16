@@ -14,7 +14,7 @@ const Signup = () => {
       } = useForm();
 
       const {createUser, login} = useContext(AuthContext);
-          // redirecting to home page or specifig page
+          // redirecting to home page or specific  page
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
@@ -101,13 +101,13 @@ const Signup = () => {
 
           {/* social sign in */}
           <div className="text-center space-x-3 mb-5">
-            <button className="btn btn-circle hover:bg-orange hover:text-white">
+            <button className="btn btn-circle bg-gray-200 border-none hover:bg-orange hover:text-white hover:border-none">
               <FaGoogle />
             </button>
-            <button className="btn btn-circle hover:bg-orange hover:text-white">
+            <button className="btn btn-circle bg-gray-200 border-none hover:bg-orange hover:text-white hover:border-none">
               <FaFacebookF />
             </button>
-            <button className="btn btn-circle hover:bg-orange hover:text-white">
+            <button className="btn btn-circle bg-gray-200 border-none hover:bg-orange hover:text-white hover:border-none">
             <FaGithub />
             </button>
           </div>
