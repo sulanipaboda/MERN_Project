@@ -20,7 +20,7 @@ const Cards = ({item}) => {
 
   //add to cart function
   const handleAddToCart = (item) => {
-    //console.log("Add to cart", item)
+    console.log("Add to cart", item)
     if(user && user?.email){
       const cartItem = {menuItemID: _id, name, quantity:1, price, image, email:user.email};
       //console.log(cartItem)
