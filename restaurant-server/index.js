@@ -4,7 +4,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const port = process.env.PORT || 3000;
 require('dotenv').config()
-//console.log(process.env.DB_USER)
+// console.log(process.env.DB_USER)
 
 //middleware
 app.use(cors());
@@ -13,12 +13,12 @@ app.use(express.json());
 
 mongoose
   .connect(
-    `mongodb+srv://sulanipaboda98:bBHfrHtmzAWIQcSx@cluster0.jburbso.mongodb.net/db-restaurant?retryWrites=true&w=majority`
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.jburbso.mongodb.net/db-restaurant?retryWrites=true&w=majority`
   )
   .then(
     console.log("Conneted to MongoDB Successfully")
   )
-  .catch((error) => console.log("Error connecting to MongoDB", error));
+  .catch((error) => console.log("Error connecting to MongoDB: ", error));
 
 //import routes
 const menuRoutes = require('./api/routes/menuRoutes');
