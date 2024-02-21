@@ -22,7 +22,14 @@ const Cards = ({item}) => {
   const handleAddToCart = (item) => {
     console.log("Add to cart", item)
     if(user && user?.email){
-      const cartItem = {menuItemID: _id, name, quantity:1, price, image, email:user.email};
+      const cartItem = {
+        menuItemID: _id,
+        name, 
+        quantity:1, 
+        price, 
+        image, 
+        email:user.email
+      };
       //console.log(cartItem)
       fetch("http://localhost:3000/cart", {
         method: "POST",
@@ -44,11 +51,11 @@ const Cards = ({item}) => {
           });
         }
       }))
-    }
+    } 
     else {
       Swal.fire({
         title: "You are not logged in!!!",
-        text: "You must have account to add the items into cart",
+        text: "You must have an account to add the items into cart",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",

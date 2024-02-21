@@ -51,7 +51,7 @@ app.listen(port, () => {
 //   useUnifiedTopology: true, 
 //   ssl: true, 
 //   tlsAllowInvalidCertificates: true
-//   }
+//   } 
 // });
 
 // async function run() {
@@ -72,7 +72,7 @@ app.listen(port, () => {
 //     //cart operations
 
 //     //post a cart to db
-//     app.post('/cart', async(req, res) => {
+//     app.post('/ ', async(req, res) => {
 //       const cartItem = req.body;
 //       const result = await cartCollections.insertOne(cartItem)
 //       res.send(result)

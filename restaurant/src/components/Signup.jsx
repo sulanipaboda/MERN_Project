@@ -40,7 +40,20 @@ const Signup = () => {
     <div className="max-w-md bg-white shadow w-full mx-auto flex items-center justify-center my-20">
         <div className="modal-action flex flex-col justify-center mt-0">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body" method="dialog">
-            <h3 className="font-bold text-lg">Create A Account!</h3>
+            <h3 className="font-bold text-lg">Create an Account!</h3>
+
+            {/* name */}
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="name"
+                placeholder="name"
+                className="input input-bordered  bg-gray-200"
+                {...register("name")}
+              />
+            </div>
 
             {/* email */}
             <div className="form-control">
