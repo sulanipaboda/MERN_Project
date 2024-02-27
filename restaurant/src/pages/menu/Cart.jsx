@@ -144,7 +144,7 @@ const Cart = () => {
         <div className="overflow-x-auto">
             <table className="table">
                 {/* head */}
-                <thead className='bg-orange text-white rounded-sm' style={{ borderBottom: '2px solid #ccc' }}> {/* Added inline style to change border color */}
+                <thead className='bg-orange text-white rounded-sm' style={{ borderBottom: '2px solid #ccc' }}> 
                 <tr>
                     <th>#</th>
                     <th>Food</th>
