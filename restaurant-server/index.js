@@ -3,8 +3,12 @@ const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
 const port = process.env.PORT || 6001;
+var jwt = require('jsonwebtoken');
 require('dotenv').config()
 //console.log(process.env.DB_USER)
+//console.log(process.env.ACCESS_SECRET_TOKEN)
+
+
 
 //middleware
 app.use(cors());
@@ -19,6 +23,16 @@ mongoose
     console.log("Conneted to MongoDB Successfully")
   )
   .catch((error) => console.log("Error connecting to MongoDB", error));
+
+
+//jwt authentication
+app.post('/jwt', async(req, res) => {
+  const user = req.body;
+  var token = jwt.sign(user, process.env.ACCESS_SECRET_TOKEN, {
+    expiresIn: '1hr'
+  });
+  res.send({token});
+})
 
 //import routes
 const menuRoutes = require('./api/routes/menuRoutes');

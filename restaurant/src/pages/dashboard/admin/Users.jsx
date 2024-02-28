@@ -22,36 +22,36 @@ const Users = () => {
 
       {/* table */}
       <div className="overflow-x-auto">
-  <table className="table table-zebra md:w-[870px]">
-    {/* head */}
-    <thead className='bg-orange text-white rounded-lg' style={{ borderBottom: '2px solid #ccc' }}>
-      <tr>
-        <th>#</th>
-        <th>Name</th> 
-        <th>Email</th>
-        <th>Role</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      {
-        users.map((user, index) => (
-          <tr key={index} >
-            <th>{index+1}</th>
-            <td>{user.name}</td>
-            <td>{user.email}</td>
-            <td>{
-              user.role === 'admin' ? "Admin" : (
-                <button className='btn btn-xs btn-circle bg-indigo-500 border-none text-white'><FaUsers /></button>
-              ) 
-            }</td>
-            <td><button className='btn btn-xs bg-red border-none text-white'><FaTrash /></button></td>
-          </tr>
-        ))
-      }
-    </tbody>
-  </table>
-</div>
+        <table className="table table-zebra md:w-[870px]">
+          {/* head */}
+          <thead className='bg-orange text-white rounded-lg' style={{ borderBottom: '2px solid #ccc' }}>
+            <tr>
+              <th>#</th>
+              <th>Name</th> 
+              <th>Email</th>
+              <th>Role</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              users.map((user, index) => (
+                <tr key={index} >
+                  <th>{index+1}</th>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                  <td>{
+                    user.role === 'admin' ? "Admin" : (
+                      <button className='btn btn-xs btn-circle bg-indigo-500 border-none text-white'><FaUsers /></button>
+                    ) 
+                  }</td>
+                  <td><button className='btn btn-xs bg-red border-none text-white'><FaTrash /></button></td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
 
     </div>
   );
