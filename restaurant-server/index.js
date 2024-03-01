@@ -3,7 +3,7 @@ const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
 const port = process.env.PORT || 6001;
-var jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 require('dotenv').config()
 //console.log(process.env.DB_USER)
 //console.log(process.env.ACCESS_SECRET_TOKEN)
@@ -28,11 +28,18 @@ mongoose
 //jwt authentication
 app.post('/jwt', async(req, res) => {
   const user = req.body;
-  var token = jwt.sign(user, process.env.ACCESS_SECRET_TOKEN, {
+  const token = jwt.sign(user, process.env.ACCESS_SECRET_TOKEN, {
     expiresIn: '1hr'
-  });
+  })
   res.send({token});
 })
+
+//verify jwt token
+//middleware
+const verifyToken = (req, res, next) => {
+  console.log(req.headers.authorization);
+}
+
 
 //import routes
 const menuRoutes = require('./api/routes/menuRoutes');
@@ -42,7 +49,7 @@ app.use('/menu', menuRoutes)
 app.use('/cart', cartRoutes)
 app.use('/users', userRoutes)
 
-app.get('/', (req, res) => {
+app.get('/', verifyToken, (req, res) => {
   res.send('Restaurant database')
 }) 
   

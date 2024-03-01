@@ -32,13 +32,32 @@ const Modal = () => {
     }
 
     //google sign in
+    // const handleLogin = () => {
+    //     signUpWithGmail().then((result) => {
+    //         const user = result.user;
+    //         alert("Signed in Successfully");
+    //         navigate(from, {replace: true})
+            
+    //     }).catch((error) => console.log(error))
+    // }
+    
     const handleLogin = () => {
         signUpWithGmail().then((result) => {
             const user = result.user;
             alert("Signed in Successfully");
-            navigate(from, {replace: true})
-            
-        }).catch((error) => console.log(error))
+            navigate(from, {replace: true});
+            window.close();
+        }).catch((error) => {
+            if (error.code === 'auth/cancelled-popup-request') {
+                // Handle cancelled popup request gracefully
+                console.log('Google sign-in popup was cancelled by the user.');
+                // You can provide feedback to the user or retry the operation
+            } else {
+                // Handle other Firebase authentication errors
+                console.error('Firebase authentication error:', error);
+                // You can provide appropriate feedback to the user or log the error
+            }
+        });
     }
 
   return (
