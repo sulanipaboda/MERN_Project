@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa'
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../contexts/AuthProvider';
+import axios from 'axios';
 
 const Modal = () => {
     const { register, handleSubmit, watch, formState: { errors} } = useForm();
@@ -22,43 +23,52 @@ const Modal = () => {
         // console.log(email, password)
         login(email, password).then((result) => {
             const user = result.user;
-            alert("Logged In Successfully");
-            document.getElementById('my_modal_5').close()
-            navigate(from, {replace: true})
+            const userInfor = {
+                name: data.name,
+                email: data.email,
+            };
+            axios
+                .post("http://localhost:3000/users", userInfor)
+                .then((response) => {
+                    // console.log(response);
+                    alert("Signed in Successfully!");
+                    navigate(from, {replace: true});
+                });
         }).catch((error) => {
             const errorMsg = error.message;
-            setErrorMsg("Plese provide correct email and password")
-        })
+            setErrorMsg("Please provide correct email and password") // Fix typo here
+        });
+        reset()
     }
 
-    //google sign in
+    // login with google
+    const handleRegister = () => {
+        signUpWithGmail()
+        .then((result) => {
+            const user = result.user;
+            const userInfor = {
+            name: result?.user?.displayName,
+            email: result?.user?.email,
+            };
+            axios
+            .post("http://localhost:3000/users", userInfor)
+            .then((response) => {
+                // console.log(response);
+                alert("Signed in Successfully!");
+                navigate(from, {replace: true});
+            });
+        })
+        .catch((error) => console.log(error));
+    };
+
+    
     // const handleLogin = () => {
     //     signUpWithGmail().then((result) => {
-    //         const user = result.user;
-    //         alert("Signed in Successfully");
-    //         navigate(from, {replace: true})
-            
+    //       const user = result.user;
+    //       alert("Signed in successfull!")
+    //       navigate(from, {replace: true})
     //     }).catch((error) => console.log(error))
-    // }
-    
-    const handleLogin = () => {
-        signUpWithGmail().then((result) => {
-            const user = result.user;
-            alert("Signed in Successfully");
-            navigate(from, {replace: true});
-            window.close();
-        }).catch((error) => {
-            if (error.code === 'auth/cancelled-popup-request') {
-                // Handle cancelled popup request gracefully
-                console.log('Google sign-in popup was cancelled by the user.');
-                // You can provide feedback to the user or retry the operation
-            } else {
-                // Handle other Firebase authentication errors
-                console.error('Firebase authentication error:', error);
-                // You can provide appropriate feedback to the user or log the error
-            }
-        });
-    }
+    //   }
 
   return (
     <dialog 
@@ -112,7 +122,7 @@ const Modal = () => {
                 
                 {/* sign in options */}
                 <div className='text-center space-x-3 mb-5'>
-                    <button className='btn btn-circle bg-gray-200 border-none hover:bg-orange hover:text-white hover:border-none' onClick={handleLogin}>
+                    <button className='btn btn-circle bg-gray-200 border-none hover:bg-orange hover:text-white hover:border-none' onClick={handleRegister}>
                         <FaGoogle />
                     </button>
                     <button className='btn btn-circle bg-gray-200 border-none hover:bg-orange hover:text-white hover:border-none'>
